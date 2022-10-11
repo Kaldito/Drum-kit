@@ -8,6 +8,8 @@ let snare = new Audio("./sounds/snare.mp3");
 let crash = new Audio("./sounds/crash.mp3");
 
 function makeSound(key) {
+    buttonAnimation(key);
+
     switch (key) {
         case "w":
             tom1.play();
@@ -41,6 +43,15 @@ function makeSound(key) {
             console.log(key);
             break;
     }
+}
+
+function buttonAnimation(key) {
+    let key_tag = document.querySelector("." + key);
+    key_tag.classList.add("pressed");
+
+    setTimeout(function() {
+        key_tag.classList.remove("pressed");
+    }, 150)
 }
 
 document.addEventListener("keydown", function(event) {
